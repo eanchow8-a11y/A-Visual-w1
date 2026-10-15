@@ -1,0 +1,28 @@
+name: Import portfolio website
+on:
+  push:
+    paths:
+      - '.github/workflows/import-site.yml'
+      - 'site-manifest.json'
+      - 'scripts/import-site.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download and verify website
+        run: python scripts/import-site.py
+      - name: Save website files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs
+          git diff --cached --quiet && exit 0
+          git commit -m "Publish complete portfolio website"
+          git push
