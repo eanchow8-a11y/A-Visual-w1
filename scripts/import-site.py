@@ -1,11 +1,11 @@
-import concurrent.futures, hashlib, json, pathlib, urllib.request
+import base64, concurrent.futures, hashlib, json, pathlib, urllib.request
 manifest=json.loads(pathlib.Path("site-manifest.json").read_text())
 origin="https://quiet-personal-garden-1014.agilechair.chatgpt.site/"
 base="/A-Visual-w1/"
 def download(item):
     name, expected=item
     if name=="index.html":
-        data="<!doctype html><html lang=\"zh-CN\"><head><meta charset=\"UTF-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/><meta name=\"theme-color\" content=\"#101b1b\"/><meta name=\"description\" content=\"苏子龙的个人主页：电气自动化、PLC 项目、AI 应用、实习经历与个人创作。\"/><title>苏子龙 · 电气自动化与 AI 应用</title><link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"/><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin/><link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@400;500;600&display=swap\" rel=\"stylesheet\"/>  <script type=\"module\" crossorigin src=\"/assets/index-Bf8wQYQ6.js\"></script>\n  <link rel=\"stylesheet\" crossorigin href=\"/assets/index-BZQLZnku.css\">\n</head><body><div id=\"root\"></div></body></html>\n".encode("utf-8")
+        data=base64.b64decode("PCFkb2N0eXBlIGh0bWw+PGh0bWwgbGFuZz0iemgtQ04iPjxoZWFkPjxtZXRhIGNoYXJzZXQ9IlVURi04Ii8+PG1ldGEgbmFtZT0idmlld3BvcnQiIGNvbnRlbnQ9IndpZHRoPWRldmljZS13aWR0aCwgaW5pdGlhbC1zY2FsZT0xLjAiLz48bWV0YSBuYW1lPSJ0aGVtZS1jb2xvciIgY29udGVudD0iIzEwMWIxYiIvPjxtZXRhIG5hbWU9ImRlc2NyaXB0aW9uIiBjb250ZW50PSLoi4/lrZDpvpnnmoTkuKrkurrkuLvpobXvvJrnlLXmsJToh6rliqjljJbjgIFQTEMg6aG555uu44CBQUkg5bqU55So44CB5a6e5Lmg57uP5Y6G5LiO5Liq5Lq65Yib5L2c44CCIi8+PHRpdGxlPuiLj+WtkOm+mSDCtyDnlLXmsJToh6rliqjljJbkuI4gQUkg5bqU55SoPC90aXRsZT48bGluayByZWw9InByZWNvbm5lY3QiIGhyZWY9Imh0dHBzOi8vZm9udHMuZ29vZ2xlYXBpcy5jb20iLz48bGluayByZWw9InByZWNvbm5lY3QiIGhyZWY9Imh0dHBzOi8vZm9udHMuZ3N0YXRpYy5jb20iIGNyb3Nzb3JpZ2luLz48bGluayBocmVmPSJodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2NzczI/ZmFtaWx5PUludGVyOndnaHRAMzAwOzQwMDs1MDA7NjAwOzcwMCZmYW1pbHk9Tm90bytTYW5zK1NDOndnaHRANDAwOzUwMDs2MDAmZGlzcGxheT1zd2FwIiByZWw9InN0eWxlc2hlZXQiLz4gIDxzY3JpcHQgdHlwZT0ibW9kdWxlIiBjcm9zc29yaWdpbiBzcmM9Ii9hc3NldHMvaW5kZXgtQmY4d1FZUTYuanMiPjwvc2NyaXB0PgogIDxsaW5rIHJlbD0ic3R5bGVzaGVldCIgY3Jvc3NvcmlnaW4gaHJlZj0iL2Fzc2V0cy9pbmRleC1CWlFMWm5rdS5jc3MiPgo8L2hlYWQ+PGJvZHk+PGRpdiBpZD0icm9vdCI+PC9kaXY+PC9ib2R5PjwvaHRtbD4NCg==")
     else:
         request=urllib.request.Request(origin+name,headers={"User-Agent":"Portfolio-Deployment"})
         with urllib.request.urlopen(request, timeout=90) as response:
