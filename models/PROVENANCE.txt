@@ -1,0 +1,9 @@
+Source: 03-final_Biodegradable_Seedling_Pot_Molding_Kit.SLDPRT
+Source SHA256: 59559A8FDC155FA6C30F8A7E0AE007A944E5D3D031228741C8AF96CE132CB445
+Conversion: local SOLIDWORKS 2026 API, original source opened read-only.
+Geometry: 212 bodies, 1085 faces, 20348 triangles.
+Materials: 7 groups, source face/feature/body appearance colors.
+Units: metres. Source Y-up orientation preserved.
+Display geometry packaged as indexed glTF 2.0 GLB; no approximation or substitute geometry.
+Poster: source 03-final_isometric.png, supplied project directory.
+Concept design / structure visualization, not manufacturing CAD.
